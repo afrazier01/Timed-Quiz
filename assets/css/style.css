@@ -1,0 +1,25 @@
+:root {
+    --mainColor: #000;
+    --fontColor:#fff;
+}
+
+* {
+    background-color: var(--mainColor);
+    color: var(--fontColor);
+}
+
+header {
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 300px;
+}
+/* header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+} */
