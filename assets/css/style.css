@@ -52,6 +52,64 @@ header a:hover {
 }
 
 .start-timer {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'century gothic';
     font-weight: bold;
 }
+
+.quizPopUp {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.0);
+    position: absolute;
+    top: 0;
+    display: none;
+    /*controls popup*/
+    justify-content: center;
+    align-items: center;
+}
+
+.quizContent {
+    height: 80%;
+    width: 80%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quizContent * {
+    background-color: #fff;
+    color: #000;
+}
+
+.quizContent div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;       
+}
+
+
+.question-buttons * {
+    width: 40%;
+    height: 10%;
+    margin: 10px;
+    border-radius: 50px;
+    text-align: center;
+    font-family: 'century gothic';
+    
+}
+
+.question-buttons button:hover {
+    border-style: solid;
+    color: rgb(53, 2, 2);
+    border-width: 2px;
+    border-color: #14ffeb;
+}
+/* .question-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100;
+} */
