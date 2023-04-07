@@ -62,11 +62,11 @@ function scoresList () {
 
 
 //Quiz Content
-var quizPrompts = ['What is your favorite color?','What is your dream job?']
-var option1 = ['red','race car driver']
-var option2 = ['blue','professional athlete']
-var option3 = ['black','salesman']
-var option4 = ['green','pilot']
+var quizPrompts = ['What is your favorite color?','What is your dream job?','what branch of the military were you in?','What is your favorite food?']
+var option1 = ['red','race car driver','army','chicken']
+var option2 = ['blue','professional athlete','air force','peas']
+var option3 = ['black','salesman','navy','fish']
+var option4 = ['green','pilot','coast guard','water']
 
 var quizText = document.querySelector('#questions')
 var button1 = document.querySelector('#b1')
@@ -84,8 +84,28 @@ button3.textContent = option3[indexCount]
 button4.textContent = option4[indexCount]
 
 button1.addEventListener('click', function(){
+    console.log('--');
     console.log('The first button was pressed');
     indexCount += 1
+    
+    //default action should be user incorrect so that correct would have a special condition
+    //if you want the correct answer to be on this button add it here
+    if (indexCount === 1) {
+        console.log('User selected the RIGHT option')
+        userScore += 100
+        console.log(userScore)
+    } else {
+        console.log('User selected the WRONG option')
+        userScore += -50
+    } 
+
+    if (userScore < 0) {
+        seeScore.setAttribute('style','color: red')
+    } else {
+        seeScore.setAttribute('style','color: #fff')
+    }
+    // console.log('The first button was pressed');
+    // indexCount += 1
 
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
@@ -103,6 +123,8 @@ button1.addEventListener('click', function(){
         indexCount = indexCount - option4.length
     }
 
+    
+
     // if statement that looks for which question
 
     quizText.textContent = quizPrompts[indexCount]
@@ -110,11 +132,34 @@ button1.addEventListener('click', function(){
     button2.textContent = option2[indexCount]
     button3.textContent = option3[indexCount]
     button4.textContent = option4[indexCount]
+    seeScore.textContent = userScore
 })
 
 button2.addEventListener('click', function(){
+    console.log('--');
     console.log('The second button was pressed');
     indexCount += 1
+    
+    
+    //default action should be user incorrect so that correct would have a special condition
+    //if you want the correct answer to be on this button add it here
+    if (indexCount === 3) {
+        console.log('User selected the RIGHT option')
+        userScore += 100
+        console.log(userScore)
+    } else {
+        console.log('User selected the WRONG option')
+        userScore += -50
+    }
+
+    if (userScore < 0) {
+        seeScore.setAttribute('style','color: red')
+    } else {
+        seeScore.setAttribute('style','color: #fff')
+    }
+    
+    // console.log('The second button was pressed');
+    // indexCount += 1
 
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
@@ -139,11 +184,35 @@ button2.addEventListener('click', function(){
     button2.textContent = option2[indexCount]
     button3.textContent = option3[indexCount]
     button4.textContent = option4[indexCount]
+    seeScore.textContent = userScore
 })   
 
 button3.addEventListener('click', function(){
+    console.log('--');
     console.log('The third button was pressed');
     indexCount += 1
+    
+    
+    
+    //default action should be user incorrect so that correct would have a special condition
+    //if you want the correct answer to be on this button add it here
+    if (indexCount === 4) {
+        console.log('User selected the RIGHT option')
+        userScore += 100
+        console.log(userScore)
+    } else {
+        console.log('User selected the WRONG option')
+        userScore += -50
+    }
+
+    if (userScore < 0) {
+        seeScore.setAttribute('style','color: red')
+    } else {
+        seeScore.setAttribute('style','color: #fff')
+    }
+    
+    // console.log('The third button was pressed');
+    // indexCount += 1
 
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
@@ -168,25 +237,33 @@ button3.addEventListener('click', function(){
     button2.textContent = option2[indexCount]
     button3.textContent = option3[indexCount]
     button4.textContent = option4[indexCount]
+    seeScore.textContent = userScore
 })
 
 button4.addEventListener('click', function(){
     console.log('--');
     console.log('The fourth button was pressed');
     indexCount += 1
-    
-    // if statement that looks for which question
-    
 
+    
+    
     //default action should be user incorrect so that correct would have a special condition
-    
-
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 1) {
+    if (indexCount === 2) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
-    } else {console.log('User selected the WRONG option')}
+    } else {
+        console.log('User selected the WRONG option')
+        userScore += -50
+    }
+
+    if (userScore < 0) {
+        seeScore.setAttribute('style','color: red')
+    } else {
+        seeScore.setAttribute('style','color: #fff')
+    }
+    
 
 
 
@@ -216,6 +293,8 @@ button4.addEventListener('click', function(){
     button4.textContent = option4[indexCount]
     seeScore.textContent = userScore
 })
+
+
 
 //renderlastscorefunction
 
