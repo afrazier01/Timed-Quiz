@@ -18,7 +18,7 @@ header {
 }
 
 header a:hover {
-    color: #14ffeb;
+    color: rgb(20, 255, 235);
 }
 
 
@@ -107,6 +107,10 @@ header a:hover {
     color: rgb(53, 2, 2);
     border-width: 2px;
     border-color: #14ffeb;
+}
+
+#questions {
+    margin-bottom: 75px;
 }
 /* .question-buttons {
     display: flex;

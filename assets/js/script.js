@@ -62,11 +62,11 @@ function scoresList () {
 
 
 //Quiz Content
-var quizPrompts = ['What is your favorite color?','What is your dream job?','what branch of the military were you in?','What is your favorite food?']
-var option1 = ['red','race car driver','army','chicken']
-var option2 = ['blue','professional athlete','air force','peas']
-var option3 = ['black','salesman','navy','fish']
-var option4 = ['green','pilot','coast guard','water']
+var quizPrompts = ['What will this return? \nDocument.children','Which statement calls the class green?','Which git command double checks to see if your local branch is in sync with the base branch in GitHub','Which of the following correctly applies css if the file is located in a folder called "css"','How many different data types can be stored in an array?','How do you stop an event from bubbling up?','What is the first value in a index?','How do you set a variable in css?','x=[2,4,5,9,54,8] \nWhat will console.log(x[7]) return?','What defines the alignment along the main axis of a flex container?']
+var option1 = ['Returns the child elements of the current document','race car driver','army','chicken',5,'event.stopPropagation();',7,8,9,10]
+var option2 = ['blue','professional athlete','git pull origin main','peas',5,6,7,8,'undefined',10]
+var option3 = ['black','salesman','navy','<link rel="stylesheet" href="./assets/css/style.css">','There is no limit',6,7,8,9,'just-content']
+var option4 = ['green',"document.querySelector('.green')",'coast guard','water',5,6,'0',':root {--variable_name}',9,10]
 
 var quizText = document.querySelector('#questions')
 var button1 = document.querySelector('#b1')
@@ -90,7 +90,7 @@ button1.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 1) {
+    if (indexCount === 1 || 6) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -143,7 +143,7 @@ button2.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 3) {
+    if (indexCount === 3 || 9) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -196,7 +196,7 @@ button3.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 4) {
+    if (indexCount === 4 || 5 || 10) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -249,7 +249,7 @@ button4.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 2) {
+    if (indexCount === 2 || 7 || 8) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
