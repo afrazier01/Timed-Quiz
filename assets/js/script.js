@@ -1,11 +1,13 @@
 var startBtn = document.querySelector('.start-timer');
 var quizTimer = document.querySelector('#time')
 var seeScore = document.querySelector('#score')
+var viewScoreBtn = document.querySelector('#viewScores')
+var displayQuizContent = document.querySelector('.quizPopUp')
 startBtn.textContent = 'Start Timer';
 
 
 var userScore = 0
-var timeLeft = 60;
+var timeLeft = 5;
 //set to 60 for actual quiz
 
 
@@ -41,15 +43,25 @@ function quizTime () {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             console.log('Quiz timer has ended')
+            viewScoreBtn.setAttribute('style','display:inline') 
+            viewScoreBtn.textContent = 'Game Over - You scored ' + userScore + '. Click here to save your score or view other scores'
+            viewScoreBtn.addEventListener('click', handleScores)
         }
         
     }, 1000)
 }
 
+function handleScores (e) {
+    console.log('Scores button was pressed')
+    e.preventDefault
+
+    displayQuizContent.setAttribute('style','display: none')
+    
+}
+
 startBtn.addEventListener('click', quizTime)
 
 function quizAssessment () {
-    var displayQuizContent = document.querySelector('.quizPopUp')
     displayQuizContent.setAttribute('style','display:flex')
 
     // add quiz content
@@ -87,7 +99,6 @@ button1.addEventListener('click', function(){
     console.log('--');
     console.log('The first button was pressed');
     indexCount += 1
-    console.log(indexCount)
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
