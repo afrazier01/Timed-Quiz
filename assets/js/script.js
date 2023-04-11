@@ -87,10 +87,11 @@ button1.addEventListener('click', function(){
     console.log('--');
     console.log('The first button was pressed');
     indexCount += 1
+    console.log(indexCount)
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 1 || 6) {
+    if (indexCount === 1 || indexCount === 6) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -143,7 +144,7 @@ button2.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 3 || 9) {
+    if (indexCount === 3 || indexCount === 9) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -196,7 +197,7 @@ button3.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 4 || 5 || 10) {
+    if (indexCount === 4 || indexCount === 5 || indexCount === 10) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -249,7 +250,7 @@ button4.addEventListener('click', function(){
     
     //default action should be user incorrect so that correct would have a special condition
     //if you want the correct answer to be on this button add it here
-    if (indexCount === 2 || 7 || 8) {
+    if (indexCount === 2 || indexCount === 7 || indexCount === 8) {
         console.log('User selected the RIGHT option')
         userScore += 100
         console.log(userScore)
@@ -308,7 +309,7 @@ button4.addEventListener('click', function(){
 // signUpButton.addEventListener("click", function(event) {
 //   event.preventDefault();
   
-//   // TODO: Create user object from submissio
+//   // TODO: Create user object from submission
 //   var signUp = {
 //     firstName: firstNameInput.value,
 //     lastName: lastNameInput.value,
