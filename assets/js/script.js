@@ -35,6 +35,7 @@ function handleQuizQuestions () {
 }
 
 button1.addEventListener('click', function(){
+    
     console.log('--');
     console.log('The first button was pressed');
     indexCount += 1
@@ -83,6 +84,10 @@ button1.addEventListener('click', function(){
     button3.textContent = option3[indexCount]
     button4.textContent = option4[indexCount]
     seeScore.textContent = userScore
+
+    
+
+    
 })
 
 button2.addEventListener('click', function(){
@@ -246,14 +251,14 @@ button4.addEventListener('click', function(){
 
 var indexCount = 0
 var userScore = 0
-var timeLeft = 60;
+var timeLeft = 10;
 //set to 60 for actual quiz
 
 //Timer
 function quizTime () {
     //checks to see if quiz needs to be reset
     if (timeLeft <= 0) {
-        timeLeft = 60
+        timeLeft = 10
         userScore = 0
         quizContent.setAttribute('style','display: flex')
         viewScoreBtn.setAttribute('style','display: none')
@@ -302,6 +307,7 @@ function quizTime () {
             viewScoreBtn.addEventListener('click', function (e) {
                 console.log('Scores button was pressed')
                  e.preventDefault
+
 
                 displayQuizContent.setAttribute('style','display: none')
                 scoreDashboard.setAttribute('style','display: flex')
