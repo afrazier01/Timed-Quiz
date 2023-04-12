@@ -3,6 +3,9 @@ var quizTimer = document.querySelector('#time')
 var seeScore = document.querySelector('#score')
 var viewScoreBtn = document.querySelector('#viewScores')
 var displayQuizContent = document.querySelector('.quizPopUp')
+var saveScoresBtn = document.querySelector('#saveScoresBtn')
+var usernameInput = document.querySelector('#username')
+var usernameField = document.querySelector('#user-username')
 startBtn.textContent = 'Start Timer';
 
 
@@ -45,19 +48,60 @@ function quizTime () {
             console.log('Quiz timer has ended')
             viewScoreBtn.setAttribute('style','display:inline') 
             viewScoreBtn.textContent = 'Game Over - You scored ' + userScore + '. Click here to save your score or view other scores'
-            viewScoreBtn.addEventListener('click', handleScores)
+            viewScoreBtn.addEventListener('click', function (e) {
+                console.log('Scores button was pressed')
+                 e.preventDefault
+
+                displayQuizContent.setAttribute('style','display: none')
+
+                //is scored saved?
+            })
         }
-        
+
+        localStorage.getItem('userScore')
     }, 1000)
 }
 
-function handleScores (e) {
-    console.log('Scores button was pressed')
-    e.preventDefault
+function renderLastScore (e) {
+    var username = JSON.parse(localStorage.getItem('username'))
+    console.log(usernameField)
+    if (username !== null) {
+        usernameField.textContent = username
 
-    displayQuizContent.setAttribute('style','display: none')
-    
+    }
 }
+
+saveScoresBtn.addEventListener('click',function (e) {
+    e.preventDefault()
+
+
+    var username = usernameInput.value  
+    console.log(username)
+
+    localStorage.setItem('username', JSON.stringify(username))
+    renderLastScore()
+
+
+
+    //   // TODO: Create user object from submission
+//   var signUp = {
+//     firstName: firstNameInput.value,
+//     lastName: lastNameInput.value,
+//     email: emailInput.value,
+//     password: passwordInput.value
+//   }
+
+//   localStorage.setItem('signUp', JSON.stringify(signUp));
+//   // TODO: Set new submission to local storage 
+// function renderMessage() {
+//     var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
+//     if (lastGrade !== null) {
+//       document.querySelector(".message").textContent = lastGrade.student + 
+//       " received a/an " + lastGrade.grade
+// });
+
+    
+})
 
 startBtn.addEventListener('click', quizTime)
 
