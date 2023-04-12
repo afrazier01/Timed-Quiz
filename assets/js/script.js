@@ -6,6 +6,8 @@ var displayQuizContent = document.querySelector('.quizPopUp')
 var saveScoresBtn = document.querySelector('#saveScoresBtn')
 var usernameInput = document.querySelector('#username')
 var usernameField = document.querySelector('#user-username')
+var scoreDashboard = document.querySelector('#scoreDashboard')
+var quizContent = document.querySelector('.question-buttons')
 startBtn.textContent = 'Start Timer';
 
 
@@ -16,6 +18,12 @@ var timeLeft = 5;
 
 //Timer
 function quizTime () {
+    if (timeLeft <= 0) {
+        timeLeft = 5
+        userScore = 0
+        quizContent.setAttribute('style','display: flex')
+        viewScoreBtn.setAttribute('style','display: none')
+    }
     console.log('Button was pressed. Timer has started')
     var displayQuizContent = document.querySelector('.quizPopUp')
     seeScore.textContent = userScore
@@ -46,6 +54,8 @@ function quizTime () {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             console.log('Quiz timer has ended')
+            quizContent.setAttribute('style', 'display: none')
+
             viewScoreBtn.setAttribute('style','display:inline') 
             viewScoreBtn.textContent = 'Game Over - You scored ' + userScore + '. Click here to save your score or view other scores'
             viewScoreBtn.addEventListener('click', function (e) {
@@ -53,20 +63,32 @@ function quizTime () {
                  e.preventDefault
 
                 displayQuizContent.setAttribute('style','display: none')
+                scoreDashboard.setAttribute('style','display: flex')
 
                 //is scored saved?
             })
         }
-
-        localStorage.getItem('userScore')
+        localStorage.setItem('score', JSON.stringify(userScore))
+        console.log('last saved score: -->', userScore)
     }, 1000)
 }
 
-function renderLastScore (e) {
+renderScore()
+function renderScore (e) {
+    // var username = JSON.parse(localStorage.getItem('username'))
+    // var score = JSON.parse(localStorage.getItem('score'))
+
+
     var username = JSON.parse(localStorage.getItem('username'))
+    var score = JSON.parse(localStorage.getItem('score'))
+    
+
     console.log(usernameField)
     if (username !== null) {
-        usernameField.textContent = username
+        var newEl = '<span>' + username + '-' + score + '</span>'
+        var el = document.createElement('div')
+        el.innerHTML = newEl
+        document.getElementById('user-username').appendChild(el)
 
     }
 }
@@ -74,46 +96,18 @@ function renderLastScore (e) {
 saveScoresBtn.addEventListener('click',function (e) {
     e.preventDefault()
 
+    var username = usernameInput.value
 
-    var username = usernameInput.value  
     console.log(username)
 
     localStorage.setItem('username', JSON.stringify(username))
-    renderLastScore()
-
-
-
-    //   // TODO: Create user object from submission
-//   var signUp = {
-//     firstName: firstNameInput.value,
-//     lastName: lastNameInput.value,
-//     email: emailInput.value,
-//     password: passwordInput.value
-//   }
-
-//   localStorage.setItem('signUp', JSON.stringify(signUp));
-//   // TODO: Set new submission to local storage 
-// function renderMessage() {
-//     var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
-//     if (lastGrade !== null) {
-//       document.querySelector(".message").textContent = lastGrade.student + 
-//       " received a/an " + lastGrade.grade
-// });
-
-    
+    renderScore()
 })
 
 startBtn.addEventListener('click', quizTime)
 
 function quizAssessment () {
     displayQuizContent.setAttribute('style','display:flex')
-
-    // add quiz content
-}
-
-function scoresList () {
-    // create var that selects the proper div
-    //set the attribute to display it
 }
 
 
