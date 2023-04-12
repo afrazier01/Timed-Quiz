@@ -23,6 +23,7 @@ function quizTime () {
         userScore = 0
         quizContent.setAttribute('style','display: flex')
         viewScoreBtn.setAttribute('style','display: none')
+        scoreDashboard.setAttribute('style','display: none')
     }
     console.log('Button was pressed. Timer has started')
     var displayQuizContent = document.querySelector('.quizPopUp')
@@ -64,7 +65,8 @@ function quizTime () {
 
                 displayQuizContent.setAttribute('style','display: none')
                 scoreDashboard.setAttribute('style','display: flex')
-
+                saveScoresBtn.setAttribute('style','display: inline')
+                usernameInput.setAttribute('style','display: inline')
                 //is scored saved?
             })
         }
@@ -85,11 +87,10 @@ function renderScore (e) {
 
     console.log(usernameField)
     if (username !== null) {
-        var newEl = '<span>' + username + '-' + score + '</span>'
+        var newEl = 'User: ' + username + ' - ' + 'Score:' + score 
         var el = document.createElement('div')
         el.innerHTML = newEl
         document.getElementById('user-username').appendChild(el)
-
     }
 }
 
@@ -102,6 +103,13 @@ saveScoresBtn.addEventListener('click',function (e) {
 
     localStorage.setItem('username', JSON.stringify(username))
     renderScore()
+    saveScoresBtn.setAttribute('style','display: none')
+    usernameInput.setAttribute('style','display: none')
+
+    var newEl2 = 'Click the timer to play again!'
+    var el2 = document.createElement('div')
+    el2.innerHTML = newEl2
+    document.getElementById('scoreDashboard').appendChild(el2)
 })
 
 startBtn.addEventListener('click', quizTime)
