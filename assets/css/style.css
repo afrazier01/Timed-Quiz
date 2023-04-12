@@ -18,13 +18,8 @@ header {
     margin-bottom: 200px;
 }
 
-header a:hover {
-    color: rgb(20, 255, 235);
-}
-
-
 .load-container {
-    height: 500px;
+    height: 80%;
     width: 60%;
     align-content: center;
     display: flex;
@@ -37,11 +32,20 @@ header a:hover {
     align-items: center;
 }
 
+#score {
+    -webkit-text-stroke: 1px;
+    -webkit-text-fill-color: #EDA538;
+    font-size: 20px; color: #3F0390; 
+    font-weight: bolder;
+    font-family: 'century gothic';
+}
+
 /*This is for the timer button*/
 .start-timer {
     height: 50px;
     width: 200px;
     background-color: #801414;
+    margin-bottom: 20px;
 }
 
 .start-timer:hover {
