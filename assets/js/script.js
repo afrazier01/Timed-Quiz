@@ -35,13 +35,13 @@ function handleQuizQuestions () {
 }
 
 button1.addEventListener('click', function(){
-    
-    console.log('--');
-    console.log('The first button was pressed');
     indexCount += 1
+    if (indexCount === 10) {
+        console.log('FIRE', indexCount)
+    }
+    console.log('The first button was pressed');
+    
     console.log('this is the index you want -->', indexCount)
-    //default action should be user incorrect so that correct would have a special condition
-    //if you want the correct answer to be on this button add it here
     if (indexCount === 1 || indexCount === 6) {
         console.log('User selected the RIGHT option')
         userScore += 100
@@ -55,9 +55,13 @@ button1.addEventListener('click', function(){
     } else {
         seeScore.setAttribute('style','color: #fff')
     }
-    // console.log('The first button was pressed');
-    // indexCount += 1
+    
+   
+    if (indexCount===10) {
+        handleGameOver()
+    }
 
+    // if statement that looks for which question
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
     }
@@ -74,31 +78,19 @@ button1.addEventListener('click', function(){
         indexCount = indexCount - option4.length
     }
 
-    
-
-    // if statement that looks for which question
-
     quizText.textContent = quizPrompts[indexCount]
     button1.textContent = option1[indexCount]
     button2.textContent = option2[indexCount]
     button3.textContent = option3[indexCount]
     button4.textContent = option4[indexCount]
     seeScore.textContent = userScore
-
-    
-
-    
 })
 
 button2.addEventListener('click', function(){
-    console.log('--');
     console.log('The second button was pressed');
     indexCount += 1
     console.log('this is the index you want -->', indexCount)
     
-    
-    //default action should be user incorrect so that correct would have a special condition
-    //if you want the correct answer to be on this button add it here
     if (indexCount === 3 || indexCount === 9) {
         console.log('User selected the RIGHT option')
         userScore += 100
@@ -114,9 +106,11 @@ button2.addEventListener('click', function(){
         seeScore.setAttribute('style','color: #fff')
     }
     
-    // console.log('The second button was pressed');
-    // indexCount += 1
+    if (indexCount===10) {
+        handleGameOver()
+    }
 
+    // if statement that looks for which question
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
     }
@@ -133,8 +127,6 @@ button2.addEventListener('click', function(){
         indexCount = indexCount - option4.length
     }
 
-    // if statement that looks for which question
-
     quizText.textContent = quizPrompts[indexCount]
     button1.textContent = option1[indexCount]
     button2.textContent = option2[indexCount]
@@ -144,14 +136,10 @@ button2.addEventListener('click', function(){
 })   
 
 button3.addEventListener('click', function(){
-    console.log('--');
     console.log('The third button was pressed');
     indexCount += 1
     console.log('this is the index you want -->', indexCount)
     
-    
-    //default action should be user incorrect so that correct would have a special condition
-    //if you want the correct answer to be on this button add it here
     if (indexCount === 4 || indexCount === 5 || indexCount === 10) {
         console.log('User selected the RIGHT option')
         userScore += 100
@@ -167,9 +155,11 @@ button3.addEventListener('click', function(){
         seeScore.setAttribute('style','color: #fff')
     }
     
-    // console.log('The third button was pressed');
-    // indexCount += 1
+    if (indexCount===10) {
+        handleGameOver()
+    }
 
+    // if statement that looks for which question
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
     }
@@ -186,8 +176,6 @@ button3.addEventListener('click', function(){
         indexCount = indexCount - option4.length
     }
 
-    // if statement that looks for which question
-
     quizText.textContent = quizPrompts[indexCount]
     button1.textContent = option1[indexCount]
     button2.textContent = option2[indexCount]
@@ -197,14 +185,10 @@ button3.addEventListener('click', function(){
 })
 
 button4.addEventListener('click', function(){
-    console.log('--');
     console.log('The fourth button was pressed');
     indexCount += 1
     console.log('this is the index you want -->', indexCount)
     
-    
-    //default action should be user incorrect so that correct would have a special condition
-    //if you want the correct answer to be on this button add it here
     if (indexCount === 2 || indexCount === 7 || indexCount === 8) {
         console.log('User selected the RIGHT option')
         userScore += 100
@@ -221,8 +205,11 @@ button4.addEventListener('click', function(){
     
 
 
+    if (indexCount===10) {
+        handleGameOver()
+    }
 
-
+    // if statement that looks for which question
     if (indexCount >= quizPrompts.length) {
         indexCount = indexCount - quizPrompts.length
     }
@@ -274,6 +261,9 @@ function quizTime () {
     var displayQuizContent = document.querySelector('.quizPopUp')
     seeScore.textContent = userScore
     displayQuizContent.setAttribute('style','display:flex')
+    quizContent.setAttribute('style','display: flex')
+    saveScoresBtn.setAttribute('style','display: none')
+
     quizAssessment()
 
     if (timeLeft <= 0) {
@@ -322,6 +312,28 @@ function quizTime () {
     console.log(indexCount,'END----')
 }
 
+function handleGameOver () {
+
+
+    // clearInterval(timerInterval);
+    console.log('Quiz timer has ended')
+    quizContent.setAttribute('style', 'display: none')
+    timeLeft = 0
+
+    viewScoreBtn.setAttribute('style','display:inline') 
+    viewScoreBtn.textContent = 'Game Over - You scored ' + userScore + '. Click here to save your score or view other scores'
+}
+
+viewScoreBtn.addEventListener('click', function (e) {
+    console.log('Scores button was pressed')
+     e.preventDefault
+
+
+    displayQuizContent.setAttribute('style','display: none')
+    scoreDashboard.setAttribute('style','display: flex')
+    saveScoresBtn.setAttribute('style','display: inline')
+    usernameInput.setAttribute('style','display: inline')
+})
 renderScore()
 function renderScore (e) {
     // var username = JSON.parse(localStorage.getItem('username'))
