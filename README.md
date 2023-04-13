@@ -1,4 +1,4 @@
-# challenge-4
+# Timed Quiz
 
 ## Description
 

@@ -13,10 +13,10 @@ startBtn.textContent = 'Start Timer';
 
 //Quiz Content
 var quizPrompts = ['What will this return? \nDocument.children','Which statement calls the class green?','Which git command double checks to see if your local branch is in sync with the base branch in GitHub','Which of the following correctly applies css if the file is located in a folder called "css"','How many different data types can be stored in an array?','How do you stop an event from bubbling up?','What is the first value in a index?','How do you set a variable in css?','x=[2,4,5,9,54,8] \nWhat will console.log(x[7]) return?','What defines the alignment along the main axis of a flex container?']
-var option1 = ['Returns the child elements of the current document',"document.getElementById('green')",'army','chicken',5,'event.stopPropagation();',7,8,9,10]
-var option2 = ['Error',"document.querySelector('green')",'git pull origin main','peas',5,6,7,8,'undefined',10]
-var option3 = ['Returns child nodes',"document.querySelector('#green')",'navy','<link rel="stylesheet" href="./assets/css/style.css">','There is no limit',6,7,8,9,'just-content']
-var option4 = ['None of the above',"window.document.querySelector('.green')",'coast guard','water',5,6,'0',':root {--variable_name}',9,10]
+var option1 = ['Returns the child elements of the current document',"document.getElementById('green')",'git pull','<link src="./assets/css/style.css">','Only objects and strings','event.stopPropagation();','User has to specific what number to use','You can not set variables in CSS','2','flex']
+var option2 = ['Error',"document.querySelector('green')",'git pull origin main','<link rel="stylesheet" src="./assets/css/style.css">','7','Only click intended element','-1','root {variable_name = property}','undefined','flex wrap']
+var option3 = ['Returns child nodes',"document.querySelector('#green')",'git push','<link rel="stylesheet" href="./assets/css/style.css">','There is no limit','All events have to bubble up','1','* {--variable_name}','0','just-content']
+var option4 = ['None of the above',"window.document.querySelector('.green')",'git push origin main','<link rel="stylesheet" href="./assets/style.css">','1','event.stopPropagation(event);','0',':root {--variable_name}','8','align-items']
 var quizText = document.querySelector('#questions')
 var button1 = document.querySelector('#b1')
 var button2 = document.querySelector('#b2')
@@ -47,7 +47,7 @@ button1.addEventListener('click', function(){
         userScore += 100
     } else {
         console.log('User selected the WRONG option')
-        userScore += -50
+        timeLeft += -5
     } 
 
     if (userScore < 0) {
@@ -105,7 +105,7 @@ button2.addEventListener('click', function(){
         console.log(userScore)
     } else {
         console.log('User selected the WRONG option')
-        userScore += -50
+        timeLeft += -5
     }
 
     if (userScore < 0) {
@@ -158,7 +158,7 @@ button3.addEventListener('click', function(){
         console.log(userScore)
     } else {
         console.log('User selected the WRONG option')
-        userScore += -50
+        timeLeft += -5
     }
 
     if (userScore < 0) {
@@ -210,7 +210,7 @@ button4.addEventListener('click', function(){
         userScore += 100
     } else {
         console.log('User selected the WRONG option')
-        userScore += -50
+        timeLeft += -5
     }
 
     if (userScore < 0) {
@@ -251,14 +251,14 @@ button4.addEventListener('click', function(){
 
 var indexCount = 0
 var userScore = 0
-var timeLeft = 10;
+var timeLeft = 60;
 //set to 60 for actual quiz
 
 //Timer
 function quizTime () {
     //checks to see if quiz needs to be reset
     if (timeLeft <= 0) {
-        timeLeft = 10
+        timeLeft = 60
         userScore = 0
         quizContent.setAttribute('style','display: flex')
         viewScoreBtn.setAttribute('style','display: none')
