@@ -36,12 +36,8 @@ function handleQuizQuestions () {
 
 button1.addEventListener('click', function(){
     indexCount += 1
-    if (indexCount === 10) {
-        console.log('FIRE', indexCount)
-    }
     console.log('The first button was pressed');
-    
-    console.log('this is the index you want -->', indexCount)
+
     if (indexCount === 1 || indexCount === 6) {
         console.log('User selected the RIGHT option')
         userScore += 100
@@ -89,7 +85,6 @@ button1.addEventListener('click', function(){
 button2.addEventListener('click', function(){
     console.log('The second button was pressed');
     indexCount += 1
-    console.log('this is the index you want -->', indexCount)
     
     if (indexCount === 3 || indexCount === 9) {
         console.log('User selected the RIGHT option')
@@ -138,7 +133,6 @@ button2.addEventListener('click', function(){
 button3.addEventListener('click', function(){
     console.log('The third button was pressed');
     indexCount += 1
-    console.log('this is the index you want -->', indexCount)
     
     if (indexCount === 4 || indexCount === 5 || indexCount === 10) {
         console.log('User selected the RIGHT option')
@@ -187,7 +181,6 @@ button3.addEventListener('click', function(){
 button4.addEventListener('click', function(){
     console.log('The fourth button was pressed');
     indexCount += 1
-    console.log('this is the index you want -->', indexCount)
     
     if (indexCount === 2 || indexCount === 7 || indexCount === 8) {
         console.log('User selected the RIGHT option')
@@ -203,8 +196,6 @@ button4.addEventListener('click', function(){
         seeScore.setAttribute('style','color: #fff')
     }
     
-
-
     if (indexCount===10) {
         handleGameOver()
     }
@@ -225,8 +216,6 @@ button4.addEventListener('click', function(){
     if (indexCount >= option4.length) {
         indexCount = indexCount - option4.length
     }
-
-    
 
     quizText.textContent = quizPrompts[indexCount]
     button1.textContent = option1[indexCount]
@@ -353,6 +342,7 @@ function renderScore (e) {
     }
 }
 
+
 saveScoresBtn.addEventListener('click',function (e) {
     e.preventDefault()
 
@@ -376,13 +366,3 @@ startBtn.addEventListener('click', quizTime)
 function quizAssessment () {
     displayQuizContent.setAttribute('style','display:flex')
 }
-
-
-
-
-
-
-
-
-
-
